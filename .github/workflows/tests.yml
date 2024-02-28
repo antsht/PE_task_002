@@ -1,0 +1,32 @@
+name: Run Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Build project using make
+      run: |
+        chmod +x ./make.sh
+        ./make.sh
+    - name: Install dependencies
+      run: |
+        pip install -r tests/requirements.txt
+    - name: Run Pytest
+      run: |
+        pytest --color=yes -v --tb=short --html=pytest_report.html tests
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      with:
+        name: pytest-results
+        path: pytest_report.html
