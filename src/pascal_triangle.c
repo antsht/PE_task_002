@@ -5,7 +5,7 @@
 
 int main(void) {
     int pas_size_to_calc = -1;
-    if (scanf("%d", &pas_size_to_calc) != 1 || !(pas_size_to_calc >= 1 || pas_size_to_calc <= MAXSIZE))
+    if (scanf("%d", &pas_size_to_calc) != 1 || !(pas_size_to_calc >= 1 && pas_size_to_calc <= MAXSIZE))
         puckxit();
     getchar();
 

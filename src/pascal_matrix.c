@@ -6,7 +6,7 @@
 int main(void) {
     int pas_size_to_calc = 0;
     int size_to_fill = -1;
-    if (scanf("%d", &size_to_fill) != 1 || !(size_to_fill >= 1 || size_to_fill <= MAXSIZETOFILL)) puckxit();
+    if (scanf("%d", &size_to_fill) != 1 || !(size_to_fill >= 1 && size_to_fill <= MAXSIZETOFILL)) puckxit();
     getchar();
 
     int pascal_triangle[MAXSIZE][MAXSIZE] = {0};
